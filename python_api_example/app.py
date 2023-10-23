@@ -78,4 +78,8 @@ api.add_resource(SaveDataToDatabase, "/savedatatodatabase")
 
 if __name__ == "__main__":
     port_number = os.getenv("PORT")
-    app.run(debug=True, port=port_number)
+    app.run(
+        debug=True,
+        port=port_number,
+        host="0.0.0.0"
+    )
