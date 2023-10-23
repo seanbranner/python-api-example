@@ -7,6 +7,6 @@ url_endpoint = 'https://machine-reports.onrender.com/uppercase'
 
 response = requests.get(
     url= url_endpoint,
-    params={'text': '7 70 seventy'})
+    params={'text': '7 70 seventy2'})
 
 print(response.json())

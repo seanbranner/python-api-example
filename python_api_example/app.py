@@ -1,6 +1,10 @@
 from flask import Flask, jsonify, request
 from flask_restful import Api, Resource
 from flasgger import Swagger
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
 api = Api(app)
@@ -73,4 +77,5 @@ api.add_resource(UppercaseText, "/uppercase")
 api.add_resource(SaveDataToDatabase, "/savedatatodatabase")
 
 if __name__ == "__main__":
-    app.run(debug=True, port=10000)
+    port_number = os.getenv("PORT")
+    app.run(debug=True, port=port_number)
