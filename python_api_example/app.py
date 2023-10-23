@@ -6,7 +6,8 @@ app = Flask(__name__)
 api = Api(app)
 swagger = Swagger(app)
 
-#add apidocs to the end of the url to see swagger endpoint
+
+# add apidocs to the end of the url to see swagger endpoint
 
 class UppercaseText(Resource):
     def get(self):
@@ -65,14 +66,11 @@ class SaveDataToDatabase(Resource):
         """
         text = request.args.get('text')
 
-
-
         return {"text": text.upper()}, 200
 
-api.add_resource(UppercaseText, "/uppercase")
 
+api.add_resource(UppercaseText, "/uppercase")
 api.add_resource(SaveDataToDatabase, "/savedatatodatabase")
 
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=10000)
