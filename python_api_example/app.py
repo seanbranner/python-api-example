@@ -6,7 +6,7 @@ app = Flask(__name__)
 api = Api(app)
 swagger = Swagger(app)
 
-#add apidocs to the end of the url to see swagger endpoints
+#add apidocs to the end of the url to see swagger endpoint
 
 class UppercaseText(Resource):
     def get(self):
