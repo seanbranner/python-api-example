@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "python-api-example"
+version = "0.0.1"
+description = ""
+authors = ["seanbranner <seanbranner@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.0"
+flasgger = "^0.9.7.1"
+pyairtable = "^2.1.0.post1"
+flask-restful = "^0.3.10"
+google-api-python-client = "^2.104.0"
+google-auth-httplib2 = "^0.1.1"
+google-auth-oauthlib = "^1.1.0"
+gunicorn = "^21.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
