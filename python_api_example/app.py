@@ -3,6 +3,7 @@ from flask_restful import Api, Resource
 from flasgger import Swagger
 from dotenv import load_dotenv
 import os
+import py_srb_google_utils
 
 load_dotenv()
 
@@ -10,6 +11,7 @@ app = Flask(__name__)
 api = Api(app)
 swagger = Swagger(app)
 
+google_handle = py_srb_google_utils.HandlgeGoogle()
 
 # add apidocs to the end of the url to see swagger endpoint
 
@@ -43,7 +45,7 @@ class UppercaseText(Resource):
         return {"text": text.upper()}, 200
 
 
-class SaveDataToDatabase(Resource):
+class GetRecords(Resource):
     def get(self):
         """
         This method responds to the GET request for this endpoint and returns the data in uppercase.
@@ -68,18 +70,20 @@ class SaveDataToDatabase(Resource):
                                 type: string
                                 description: The text in uppercase
         """
-        text = request.args.get('text')
 
-        return {"text": text.upper()}, 200
+        google_values = google_handle.read_google_sheet()
 
+        return {"values": google_values}, 200
 
 api.add_resource(UppercaseText, "/uppercase")
-api.add_resource(SaveDataToDatabase, "/savedatatodatabase")
+api.add_resource(GetRecords, "/getrecords")
 
 if __name__ == "__main__":
     port_number = os.getenv("PORT")
+    host_name = os.getenv("HOST")
+
     app.run(
         debug=True,
         port=port_number,
-        host="0.0.0.0"
+        host=host_name
     )
